@@ -1,6 +1,6 @@
 const express = require('express')
 const productsRouter = express.Router()
-const products = require('./../../data/products.json')
+const products = require('../data/products.json')
 
 productsRouter.route('/').get((req,res)=> {
     res.render('products',{
@@ -8,7 +8,7 @@ productsRouter.route('/').get((req,res)=> {
     })
 })
 
-productRouter.route('/:id').get((req,res)=> {
+productsRouter.route('/:id').get((req,res)=> {
     const id = req.params.id;
     res.render("product",{
         product: products[id],
