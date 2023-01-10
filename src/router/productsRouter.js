@@ -2,7 +2,7 @@ const express = require('express')
 const productsRouter = express.Router()
 const products = require('./../../data/products.json')
 
-productRouter.route('/').get((req,res)=> {
+productsRouter.route('/').get((req,res)=> {
     res.render('products',{
         products,
     })
