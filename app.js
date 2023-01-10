@@ -19,7 +19,9 @@ productRouter.route('/').get((req,res)=> {
 
 productRouter.route('/:id').get((req,res)=> {
     const id = req.params.id;
-    res.send("This product "+id)
+    res.render("product",{
+        product: products[id],
+    })
 })
 
 app.use("/products", productRouter)
