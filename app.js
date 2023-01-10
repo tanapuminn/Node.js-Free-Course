@@ -3,28 +3,16 @@ const app = express();
 const port = 3000;
 
 const path = require('path')
-const productRouter = express.Router()
-const products = require('./data/products.json')
+const productsRouter = require('./src/router/productsRouter')
 
 app.use(express.static(path.join(__dirname,'/public/')))
 
 app.set("views","./src/views")
 app.set("view engine","ejs")
 
-productRouter.route('/').get((req,res)=> {
-    res.render('products',{
-        products,
-    })
-})
 
-productRouter.route('/:id').get((req,res)=> {
-    const id = req.params.id;
-    res.render("product",{
-        product: products[id],
-    })
-})
 
-app.use("/products", productRouter)
+app.use("/products", productsRouter)
 
 app.get('/',(req,res) => {
     res.render('index',{username: 'tanapumin'})
